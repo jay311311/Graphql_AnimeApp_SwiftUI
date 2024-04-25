@@ -14,6 +14,13 @@
 		6735D1CC2BDB101E003755A8 /* Graphql_AnimeApp_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6735D1CB2BDB101E003755A8 /* Graphql_AnimeApp_SwiftUITests.swift */; };
 		6735D1D62BDB101E003755A8 /* Graphql_AnimeApp_SwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6735D1D52BDB101E003755A8 /* Graphql_AnimeApp_SwiftUIUITests.swift */; };
 		6735D1D82BDB101E003755A8 /* Graphql_AnimeApp_SwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6735D1D72BDB101E003755A8 /* Graphql_AnimeApp_SwiftUIUITestsLaunchTests.swift */; };
+		6735D1E62BDB103F003755A8 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 6735D1E52BDB103F003755A8 /* Apollo */; };
+		6735D1EE2BDB1615003755A8 /* graphql in Resources */ = {isa = PBXBuildFile; fileRef = 6735D1ED2BDB1615003755A8 /* graphql */; };
+		6735D1F02BDB172C003755A8 /* AnimeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6735D1EF2BDB172C003755A8 /* AnimeNetwork.swift */; };
+		6735D1F22BDB1A39003755A8 /* ChargeTripAPI in Resources */ = {isa = PBXBuildFile; fileRef = 6735D1F12BDB1A39003755A8 /* ChargeTripAPI */; };
+		6735D1F52BDB1AEB003755A8 /* ChargeTripAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 6735D1F42BDB1AEB003755A8 /* ChargeTripAPI */; };
+		6735D1F72BDB1CD4003755A8 /* AnimeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6735D1F62BDB1CD4003755A8 /* AnimeListViewModel.swift */; };
+		6735D1F92BDB1F5A003755A8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6735D1F82BDB1F5A003755A8 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,11 @@
 		6735D1D12BDB101E003755A8 /* Graphql_AnimeApp_SwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Graphql_AnimeApp_SwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6735D1D52BDB101E003755A8 /* Graphql_AnimeApp_SwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphql_AnimeApp_SwiftUIUITests.swift; sourceTree = "<group>"; };
 		6735D1D72BDB101E003755A8 /* Graphql_AnimeApp_SwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphql_AnimeApp_SwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6735D1ED2BDB1615003755A8 /* graphql */ = {isa = PBXFileReference; lastKnownFileType = folder; name = graphql; path = ../graphql; sourceTree = "<group>"; };
+		6735D1EF2BDB172C003755A8 /* AnimeNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeNetwork.swift; sourceTree = "<group>"; };
+		6735D1F12BDB1A39003755A8 /* ChargeTripAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ChargeTripAPI; path = ../ChargeTripAPI; sourceTree = "<group>"; };
+		6735D1F62BDB1CD4003755A8 /* AnimeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewModel.swift; sourceTree = "<group>"; };
+		6735D1F82BDB1F5A003755A8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6735D1F52BDB1AEB003755A8 /* ChargeTripAPI in Frameworks */,
+				6735D1E62BDB103F003755A8 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +92,7 @@
 				6735D1CA2BDB101E003755A8 /* Graphql_AnimeApp_SwiftUITests */,
 				6735D1D42BDB101E003755A8 /* Graphql_AnimeApp_SwiftUIUITests */,
 				6735D1B82BDB101B003755A8 /* Products */,
+				6735D1F32BDB1AEB003755A8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,10 +109,15 @@
 		6735D1B92BDB101B003755A8 /* Graphql_AnimeApp_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				6735D1F12BDB1A39003755A8 /* ChargeTripAPI */,
 				6735D1BA2BDB101B003755A8 /* Graphql_AnimeApp_SwiftUIApp.swift */,
 				6735D1BC2BDB101B003755A8 /* ContentView.swift */,
+				6735D1F62BDB1CD4003755A8 /* AnimeListViewModel.swift */,
+				6735D1F82BDB1F5A003755A8 /* Model.swift */,
+				6735D1ED2BDB1615003755A8 /* graphql */,
 				6735D1BE2BDB101E003755A8 /* Assets.xcassets */,
 				6735D1C02BDB101E003755A8 /* Preview Content */,
+				6735D1EF2BDB172C003755A8 /* AnimeNetwork.swift */,
 			);
 			path = Graphql_AnimeApp_SwiftUI;
 			sourceTree = "<group>";
@@ -127,6 +147,13 @@
 			path = Graphql_AnimeApp_SwiftUIUITests;
 			sourceTree = "<group>";
 		};
+		6735D1F32BDB1AEB003755A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +170,10 @@
 			dependencies = (
 			);
 			name = Graphql_AnimeApp_SwiftUI;
+			packageProductDependencies = (
+				6735D1E52BDB103F003755A8 /* Apollo */,
+				6735D1F42BDB1AEB003755A8 /* ChargeTripAPI */,
+			);
 			productName = Graphql_AnimeApp_SwiftUI;
 			productReference = 6735D1B72BDB101B003755A8 /* Graphql_AnimeApp_SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +246,9 @@
 				Base,
 			);
 			mainGroup = 6735D1AE2BDB101B003755A8;
+			packageReferences = (
+				6735D1E42BDB103F003755A8 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = 6735D1B82BDB101B003755A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,7 +266,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6735D1C22BDB101E003755A8 /* Preview Assets.xcassets in Resources */,
+				6735D1EE2BDB1615003755A8 /* graphql in Resources */,
 				6735D1BF2BDB101E003755A8 /* Assets.xcassets in Resources */,
+				6735D1F22BDB1A39003755A8 /* ChargeTripAPI in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6735D1F92BDB1F5A003755A8 /* Model.swift in Sources */,
 				6735D1BD2BDB101B003755A8 /* ContentView.swift in Sources */,
+				6735D1F72BDB1CD4003755A8 /* AnimeListViewModel.swift in Sources */,
 				6735D1BB2BDB101B003755A8 /* Graphql_AnimeApp_SwiftUIApp.swift in Sources */,
+				6735D1F02BDB172C003755A8 /* AnimeNetwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +627,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6735D1E42BDB103F003755A8 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6735D1E52BDB103F003755A8 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6735D1E42BDB103F003755A8 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		6735D1F42BDB1AEB003755A8 /* ChargeTripAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ChargeTripAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6735D1AF2BDB101B003755A8 /* Project object */;
 }
