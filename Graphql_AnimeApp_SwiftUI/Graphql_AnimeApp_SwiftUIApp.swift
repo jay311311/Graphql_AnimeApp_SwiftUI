@@ -9,11 +9,9 @@ import SwiftUI
 
 @main
 struct Graphql_AnimeApp_SwiftUIApp: App {
-    @StateObject var animeViewModel: AnimeListViewModel = AnimeListViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(animeViewModel)
+            MainView(viewModel: .init(service: .init(networking: AnimeNetwork())))
         }
     }
 }
