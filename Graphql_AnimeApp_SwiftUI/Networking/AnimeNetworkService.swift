@@ -15,11 +15,11 @@ enum ServiceError: Error {
 }
 
 protocol AnimeNetworkServiceType {
-    func getAnimes() -> AnyPublisher<[Animes], ServiceError>
+    func getAnimes() -> AnyPublisher<[Anime], ServiceError>
 }
 
 
-class AnimeNetworkService: AnimeNetworkServiceType {
+class AnimeNetworkService: AnimeNetworkServiceType, ObservableObject {
     
     private var networking: AnimeNetwork
     
@@ -27,12 +27,14 @@ class AnimeNetworkService: AnimeNetworkServiceType {
         self.networking = networking
     }
     
-    func getAnimes() -> AnyPublisher<[Animes], ServiceError> {
+    func getAnimes() -> AnyPublisher<[Anime], ServiceError> {
         Future { [weak self] promise in
             self?.networking.fetchData { result in
                 switch result {
                 case let .success(anime):
-                    promise(.success(anime))
+                    let animes = Animes(animes: anime).animes
+                    let notNillAnimes = animes.compactMap { $0 }
+                    promise(.success(notNillAnimes))
                 case let .failure(error):
                     promise(.failure(error))
                 }

@@ -9,17 +9,16 @@ import Foundation
 import ChargeTripAPI
 import Apollo
 
-typealias Animes = AnimeQuery.Data.Page.Medium?
 
 class AnimeNetwork {
     
     let apolloClient = ApolloClient(url: URL(string: "https://graphql.anilist.co/graphql")!)
     
-    func fetchData(completion: @escaping (Result<[Animes], ServiceError>) -> Void) {
+    func fetchData(completion: @escaping (Result<AnimesData, ServiceError>) -> Void) {
         apolloClient.fetch(query: AnimeQuery()) { result in
             switch result {
             case let .success(graphQLResult):
-                if let media = graphQLResult.data?.page?.media {
+                if let media = graphQLResult.data?.page {
                     completion(.success(media))
                 } else {
                     completion(.failure(.emptyValue))

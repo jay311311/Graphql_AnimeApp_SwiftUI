@@ -11,7 +11,7 @@ import Combine
 class MainViewModel: ObservableObject {
     
     @Published var phase: Phase = .notRequested
-    @Published var animes: [Animes] = []
+    @Published var animes: [Anime] = []
 
     enum Action{
         case loading
@@ -29,8 +29,6 @@ class MainViewModel: ObservableObject {
     func send(action: Action) {
         switch action {
         case .loading:
-            phase = .loading
-            
             service.getAnimes()
                 .sink { [weak self] completion in
                     if case .failure = completion {
@@ -40,6 +38,7 @@ class MainViewModel: ObservableObject {
                     self?.phase = .success
                     self?.animes = data
                 }.store(in: &subscriptions)
+            phase = .loading
 
         case .goToDetail:
             break
