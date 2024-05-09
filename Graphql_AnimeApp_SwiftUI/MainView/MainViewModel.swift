@@ -15,7 +15,6 @@ class MainViewModel: ObservableObject {
 
     enum Action{
         case loading
-        case goToDetail
     }
     
     private var service: AnimeNetworkService
@@ -39,12 +38,6 @@ class MainViewModel: ObservableObject {
                     self?.animes = data
                 }.store(in: &subscriptions)
             phase = .loading
-
-        case .goToDetail:
-            break
         }
-        
     }
-
-
 }

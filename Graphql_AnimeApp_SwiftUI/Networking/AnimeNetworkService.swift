@@ -39,6 +39,8 @@ class AnimeNetworkService: AnimeNetworkServiceType, ObservableObject {
                     promise(.failure(error))
                 }
             }
-        }.eraseToAnyPublisher()
+        }
+        .mapError { .error($0) }
+        .eraseToAnyPublisher()
     }
 }
