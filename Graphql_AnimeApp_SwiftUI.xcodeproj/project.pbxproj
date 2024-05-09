@@ -127,10 +127,10 @@
 		6735D1B92BDB101B003755A8 /* Graphql_AnimeApp_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				675935EF2BED4310005D535F /* Detail */,
 				675935EA2BEBDAAC005D535F /* Model */,
 				675935D62BE94724005D535F /* General */,
 				675935DC2BE94F29005D535F /* MainView */,
+				675935EF2BED4310005D535F /* Detail */,
 				6735D1F12BDB1A39003755A8 /* ChargeTripAPI */,
 				6735D1BA2BDB101B003755A8 /* Graphql_AnimeApp_SwiftUIApp.swift */,
 				6735D1BC2BDB101B003755A8 /* ContentView.swift */,

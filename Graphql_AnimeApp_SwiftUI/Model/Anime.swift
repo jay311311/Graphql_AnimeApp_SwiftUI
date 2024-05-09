@@ -103,13 +103,4 @@ struct Anime: Decodable, Identifiable,Hashable {
         self.isAdult = isAdult
         self.siteUrl = siteUrl
     }
-    
 }
-
-//enum MediaSeason:String {
-//    case winter = "WINTER"
-//    case spring = "SPRING"
-//    case summer = "SUMMER"
-//    case fall = "FALL"
-//    
-//}

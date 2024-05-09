@@ -55,7 +55,7 @@ struct AnimeCell: View {
     var anime: Anime
     
     var body: some View {
-        return LazyVStack(alignment: .center){
+        LazyVStack(alignment: .center) {
             AsyncImage(url: URL(string: anime.bannerImage ?? "")) { image in
                 image.resizable()
             } placeholder: {
