@@ -35,7 +35,7 @@ struct DetailView: View {
                 description
                     .padding(.horizontal,10)
             }
-            .navigationTitle(viewModel.anime.synonyms[0] ?? "")
+            .navigationTitle(viewModel.anime.title?.romaji ?? "")
             .navigationBarTitleDisplayMode(.inline)
             .safeAreaInset(edge: .bottom, content: {
                 Button {
@@ -80,7 +80,7 @@ struct DetailView: View {
             HStack {
                 infoCell(title: "Type", info: viewModel.anime.type ?? "-")
                 infoCell(title: "Score", score:  viewModel.anime.averageScore)
-                infoCell(title: "Year", score: viewModel.anime.seasonYear)
+                infoCell(title: "Year", score: viewModel.anime.averageScore)
                 infoCell(title: "Time", score: viewModel.anime.duration )
             }
         }
@@ -108,7 +108,7 @@ struct infoCell: View {
     }
 }
 
-#Preview {
-    DetailView(viewModel: .init(anime: Anime(id: 0, type: "ANIME", format: "TV", status: "FINISHED", description: "It is the dark century and the people are suffering under the rule of the devil, Vandel, who is able to manipulate monsters. The Vandel Busters are a group of people who hunt these devils, and among them, the Zenon Squad is known to be the strongest busters on the continent. A young boy, Beet, dreams of joining the Zenon Squad. However, one day, as a result of Beet's fault, the Zenon squad was defeated by the devil, Beltose. The five dying busters sacrificed their life power into their five weapons, Saiga. After giving their weapons to Beet, they passed away. Years have passed since then and the young Vandel Buster, Beet, begins his adventure to carry out the Zenon Squad's will to put an end to the dark century. ", season: "FALL", seasonYear: 2004, seasonInt: 44, episodes: 52, duration: 23, countryOfOrigin: "JP", isLicensed: true, source: "MANGA", updatedAt: 1715031745, bannerImage: "https://s4.anilist.co/file/anilistcdn/media/anime/banner/7-hjjlCe3yO7lO.jpg", genres: ["Action", "Drama", "Mystery", "Supernatural"], synonyms: ["ウイッチハンターロビン", "WHR"], averageScore:82)))
-}
+//#Preview {
+//    DetailView(viewModel: .init(anime: Anime(id: 0, type: "ANIME", format: "TV", status: "FINISHED", description: "It is the dark century and the people are suffering under the rule of the devil, Vandel, who is able to manipulate monsters. The Vandel Busters are a group of people who hunt these devils, and among them, the Zenon Squad is known to be the strongest busters on the continent. A young boy, Beet, dreams of joining the Zenon Squad. However, one day, as a result of Beet's fault, the Zenon squad was defeated by the devil, Beltose. The five dying busters sacrificed their life power into their five weapons, Saiga. After giving their weapons to Beet, they passed away. Years have passed since then and the young Vandel Buster, Beet, begins his adventure to carry out the Zenon Squad's will to put an end to the dark century. ", season: "FALL", seasonYear: 2004, seasonInt: 44, episodes: 52, duration: 23, countryOfOrigin: "JP", isLicensed: true, source: "MANGA", updatedAt: 1715031745, bannerImage: "https://s4.anilist.co/file/anilistcdn/media/anime/banner/7-hjjlCe3yO7lO.jpg", genres: ["Action", "Drama", "Mystery", "Supernatural"], synonyms: ["ウイッチハンターロビン", "WHR"], averageScore:82)))
+//}
 

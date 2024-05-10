@@ -4,8 +4,9 @@
 import ApolloAPI
 
 public extension Objects {
-  static let PageInfo = ApolloAPI.Object(
-    typename: "PageInfo",
+  /// Date object that allows for incomplete date values (fuzzy)
+  static let FuzzyDate = ApolloAPI.Object(
+    typename: "FuzzyDate",
     implementedInterfaces: []
   )
 }

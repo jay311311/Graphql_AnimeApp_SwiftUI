@@ -25,7 +25,9 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "Query": return ChargeTripAPI.Objects.Query
     case "Page": return ChargeTripAPI.Objects.Page
     case "Media": return ChargeTripAPI.Objects.Media
-    case "PageInfo": return ChargeTripAPI.Objects.PageInfo
+    case "FuzzyDate": return ChargeTripAPI.Objects.FuzzyDate
+    case "MediaTitle": return ChargeTripAPI.Objects.MediaTitle
+    case "MediaCoverImage": return ChargeTripAPI.Objects.MediaCoverImage
     default: return nil
     }
   }

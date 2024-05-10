@@ -7,32 +7,31 @@ query Anime {
             format
             status
             description
-            season
-            seasonYear
-            seasonInt
             episodes
             duration
-            countryOfOrigin
-            isLicensed
-            source
-            updatedAt
             bannerImage
             genres
-            synonyms
             averageScore
-            meanScore
             popularity
-            trending
-            favourites
             isAdult
             siteUrl
-        }
-        pageInfo {
-            total
-            perPage
-            currentPage
-            lastPage
-            hasNextPage
+            startDate {
+                year
+                month
+                day
+            }
+            title {
+                romaji
+                english
+                native
+                userPreferred
+            }
+            coverImage {
+                extraLarge
+                large
+                medium
+                color
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ public class AnimeQuery: GraphQLQuery {
   public static let operationName: String = "Anime"
   public static let operationDocument: ApolloAPI.OperationDocument = .init(
     definition: .init(
-      #"query Anime { Page { __typename media { __typename id idMal type format status description season seasonYear seasonInt episodes duration countryOfOrigin isLicensed source updatedAt bannerImage genres synonyms averageScore meanScore popularity trending favourites isAdult siteUrl } pageInfo { __typename total perPage currentPage lastPage hasNextPage } } }"#
+      #"query Anime { Page { __typename media { __typename id idMal type format status description episodes duration bannerImage genres averageScore popularity isAdult siteUrl startDate { __typename year month day } title { __typename romaji english native userPreferred } coverImage { __typename extraLarge large medium color } } } }"#
     ))
 
   public init() {}
@@ -34,12 +34,9 @@ public class AnimeQuery: GraphQLQuery {
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
         .field("media", [Medium?]?.self),
-        .field("pageInfo", PageInfo?.self),
       ] }
 
       public var media: [Medium?]? { __data["media"] }
-      /// The pagination information
-      public var pageInfo: PageInfo? { __data["pageInfo"] }
 
       /// Page.Medium
       ///
@@ -57,25 +54,17 @@ public class AnimeQuery: GraphQLQuery {
           .field("format", GraphQLEnum<ChargeTripAPI.MediaFormat>?.self),
           .field("status", GraphQLEnum<ChargeTripAPI.MediaStatus>?.self),
           .field("description", String?.self),
-          .field("season", GraphQLEnum<ChargeTripAPI.MediaSeason>?.self),
-          .field("seasonYear", Int?.self),
-          .field("seasonInt", Int?.self),
           .field("episodes", Int?.self),
           .field("duration", Int?.self),
-          .field("countryOfOrigin", ChargeTripAPI.CountryCode?.self),
-          .field("isLicensed", Bool?.self),
-          .field("source", GraphQLEnum<ChargeTripAPI.MediaSource>?.self),
-          .field("updatedAt", Int?.self),
           .field("bannerImage", String?.self),
           .field("genres", [String?]?.self),
-          .field("synonyms", [String?]?.self),
           .field("averageScore", Int?.self),
-          .field("meanScore", Int?.self),
           .field("popularity", Int?.self),
-          .field("trending", Int?.self),
-          .field("favourites", Int?.self),
           .field("isAdult", Bool?.self),
           .field("siteUrl", String?.self),
+          .field("startDate", StartDate?.self),
+          .field("title", Title?.self),
+          .field("coverImage", CoverImage?.self),
         ] }
 
         /// The id of the media
@@ -90,73 +79,103 @@ public class AnimeQuery: GraphQLQuery {
         public var status: GraphQLEnum<ChargeTripAPI.MediaStatus>? { __data["status"] }
         /// Short description of the media's story and characters
         public var description: String? { __data["description"] }
-        /// The season the media was initially released in
-        public var season: GraphQLEnum<ChargeTripAPI.MediaSeason>? { __data["season"] }
-        /// The season year the media was initially released in
-        public var seasonYear: Int? { __data["seasonYear"] }
-        /// The year & season the media was initially released in
-        public var seasonInt: Int? { __data["seasonInt"] }
         /// The amount of episodes the anime has when complete
         public var episodes: Int? { __data["episodes"] }
         /// The general length of each anime episode in minutes
         public var duration: Int? { __data["duration"] }
-        /// Where the media was created. (ISO 3166-1 alpha-2)
-        public var countryOfOrigin: ChargeTripAPI.CountryCode? { __data["countryOfOrigin"] }
-        /// If the media is officially licensed or a self-published doujin release
-        public var isLicensed: Bool? { __data["isLicensed"] }
-        /// Source type the media was adapted from.
-        public var source: GraphQLEnum<ChargeTripAPI.MediaSource>? { __data["source"] }
-        /// When the media's data was last updated
-        public var updatedAt: Int? { __data["updatedAt"] }
         /// The banner image of the media
         public var bannerImage: String? { __data["bannerImage"] }
         /// The genres of the media
         public var genres: [String?]? { __data["genres"] }
-        /// Alternative titles of the media
-        public var synonyms: [String?]? { __data["synonyms"] }
         /// A weighted average score of all the user's scores of the media
         public var averageScore: Int? { __data["averageScore"] }
-        /// Mean score of all the user's scores of the media
-        public var meanScore: Int? { __data["meanScore"] }
         /// The number of users with the media on their list
         public var popularity: Int? { __data["popularity"] }
-        /// The amount of related activity in the past hour
-        public var trending: Int? { __data["trending"] }
-        /// The amount of user's who have favourited the media
-        public var favourites: Int? { __data["favourites"] }
         /// If the media is intended only for 18+ adult audiences
         public var isAdult: Bool? { __data["isAdult"] }
         /// The url for the media page on the AniList website
         public var siteUrl: String? { __data["siteUrl"] }
-      }
+        /// The first official release date of the media
+        public var startDate: StartDate? { __data["startDate"] }
+        /// The official titles of the media in various languages
+        public var title: Title? { __data["title"] }
+        /// The cover images of the media
+        public var coverImage: CoverImage? { __data["coverImage"] }
 
-      /// Page.PageInfo
-      ///
-      /// Parent Type: `PageInfo`
-      public struct PageInfo: ChargeTripAPI.SelectionSet {
-        public let __data: DataDict
-        public init(_dataDict: DataDict) { __data = _dataDict }
+        /// Page.Medium.StartDate
+        ///
+        /// Parent Type: `FuzzyDate`
+        public struct StartDate: ChargeTripAPI.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { ChargeTripAPI.Objects.PageInfo }
-        public static var __selections: [ApolloAPI.Selection] { [
-          .field("__typename", String.self),
-          .field("total", Int?.self),
-          .field("perPage", Int?.self),
-          .field("currentPage", Int?.self),
-          .field("lastPage", Int?.self),
-          .field("hasNextPage", Bool?.self),
-        ] }
+          public static var __parentType: ApolloAPI.ParentType { ChargeTripAPI.Objects.FuzzyDate }
+          public static var __selections: [ApolloAPI.Selection] { [
+            .field("__typename", String.self),
+            .field("year", Int?.self),
+            .field("month", Int?.self),
+            .field("day", Int?.self),
+          ] }
 
-        /// The total number of items. Note: This value is not guaranteed to be accurate, do not rely on this for logic
-        public var total: Int? { __data["total"] }
-        /// The count on a page
-        public var perPage: Int? { __data["perPage"] }
-        /// The current page
-        public var currentPage: Int? { __data["currentPage"] }
-        /// The last page
-        public var lastPage: Int? { __data["lastPage"] }
-        /// If there is another page
-        public var hasNextPage: Bool? { __data["hasNextPage"] }
+          /// Numeric Year (2017)
+          public var year: Int? { __data["year"] }
+          /// Numeric Month (3)
+          public var month: Int? { __data["month"] }
+          /// Numeric Day (24)
+          public var day: Int? { __data["day"] }
+        }
+
+        /// Page.Medium.Title
+        ///
+        /// Parent Type: `MediaTitle`
+        public struct Title: ChargeTripAPI.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: ApolloAPI.ParentType { ChargeTripAPI.Objects.MediaTitle }
+          public static var __selections: [ApolloAPI.Selection] { [
+            .field("__typename", String.self),
+            .field("romaji", String?.self),
+            .field("english", String?.self),
+            .field("native", String?.self),
+            .field("userPreferred", String?.self),
+          ] }
+
+          /// The romanization of the native language title
+          public var romaji: String? { __data["romaji"] }
+          /// The official english title
+          public var english: String? { __data["english"] }
+          /// Official title in it's native language
+          public var native: String? { __data["native"] }
+          /// The currently authenticated users preferred title language. Default romaji for non-authenticated
+          public var userPreferred: String? { __data["userPreferred"] }
+        }
+
+        /// Page.Medium.CoverImage
+        ///
+        /// Parent Type: `MediaCoverImage`
+        public struct CoverImage: ChargeTripAPI.SelectionSet {
+          public let __data: DataDict
+          public init(_dataDict: DataDict) { __data = _dataDict }
+
+          public static var __parentType: ApolloAPI.ParentType { ChargeTripAPI.Objects.MediaCoverImage }
+          public static var __selections: [ApolloAPI.Selection] { [
+            .field("__typename", String.self),
+            .field("extraLarge", String?.self),
+            .field("large", String?.self),
+            .field("medium", String?.self),
+            .field("color", String?.self),
+          ] }
+
+          /// The cover image url of the media at its largest size. If this size isn't available, large will be provided instead.
+          public var extraLarge: String? { __data["extraLarge"] }
+          /// The cover image url of the media at a large size
+          public var large: String? { __data["large"] }
+          /// The cover image url of the media at medium size
+          public var medium: String? { __data["medium"] }
+          /// Average #hex color of cover image
+          public var color: String? { __data["color"] }
+        }
       }
     }
   }

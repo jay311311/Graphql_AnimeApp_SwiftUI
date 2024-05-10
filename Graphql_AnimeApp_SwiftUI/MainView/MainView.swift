@@ -32,7 +32,7 @@ struct MainView: View {
     var AnimeList: some View {
         NavigationStack(path: $path) {
             List(viewModel.animes, id: \.self) { anime in
-                if !anime.synonyms.isEmpty && anime.bannerImage != nil {
+                if anime.bannerImage != nil {
                     AnimeCell(anime: anime)
                         .onTapGesture{
                             path.append(DetailViewContent(anime: anime))
@@ -65,7 +65,7 @@ struct AnimeCell: View {
             .aspectRatio(contentMode: .fill)
             .frame(width: 250, height: 100)
             VStack(spacing: 0) {
-                Text("\(anime.synonyms[0] ?? "")")
+                Text("\(anime.title?.romaji ?? "")")
                     .font(.system(size: 12, weight: .medium))
                 HStack() {
                     ForEach(anime.genres.indices, id: \.self) { index in
