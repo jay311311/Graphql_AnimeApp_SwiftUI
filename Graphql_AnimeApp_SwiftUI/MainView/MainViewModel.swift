@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 class MainViewModel: ObservableObject {
-    
     @Published var phase: Phase = .notRequested
-    @Published var animes: [Anime] = []
+    @Published var animesForList: [Anime] = []
+    @Published var animesForMainSlide: [Anime] = []
 
     enum Action{
         case loading
@@ -24,7 +24,6 @@ class MainViewModel: ObservableObject {
         self.service = service
     }
     
-    
     func send(action: Action) {
         switch action {
         case .loading:
@@ -35,7 +34,8 @@ class MainViewModel: ObservableObject {
                     }
                 } receiveValue: { [weak self] data in
                     self?.phase = .success
-                    self?.animes = data
+                    self?.animesForList = data.filter { $0.format == "TV"}
+                    self?.animesForMainSlide = data.filter { $0.format == "MOVIE" || $0.format == "OVA"}
                 }.store(in: &subscriptions)
             phase = .loading
         }

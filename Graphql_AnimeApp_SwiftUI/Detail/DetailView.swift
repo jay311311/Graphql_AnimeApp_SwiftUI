@@ -13,46 +13,60 @@ struct DetailView: View {
     @ObservedObject var viewModel: DetailViewModel
     
     var body: some View {
-        ZStack{
-            ScrollView{
-                AsyncImage(url: URL(string: viewModel.anime.bannerImage ?? "")) { image in
-                    image.resizable()
-                    image.resizable()
-                    image.resizable()
-                } placeholder: {
-                    LoadingView()
-                        .foregroundStyle(.white)
+        ScrollView {
+            ZStack(alignment: .leading) {
+                VStack {
+                    ZStack {
+                        AsyncImageView(url: viewModel.anime.bannerImage ?? "", contentMode: .fill)
+                        
+                        LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.5)]), startPoint: .zero, endPoint: .bottom)
+                    }
+                    .frame(width: UIScreen.main.bounds.width, height: 150)
+                    Spacer()
                 }
-                .aspectRatio(contentMode: .fit)
                 
+                AsyncImageView(url: viewModel.anime.coverImage?.extraLarge ?? "", contentMode: .fit)
+                    .frame(width: 120)
+                    .padding(.leading, 20)
+                    .padding(.top, 30)
+            }
+            
+            VStack(alignment: .leading, spacing: 10) {
                 genres
-                    .padding(.leading, 10)
+                    .padding(.leading, 20)
                     .padding(.top, 10)
                 
+                Text(viewModel.anime.title?.romaji ?? "")
+                    .font(.system(size: 20, weight: .bold))
+                    .padding(.vertical, 10)
+                    .padding(.leading, 20)
+                    .frame(alignment: .leading)
+                
                 information
-                    .padding(.all, 20)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
                 
                 description
-                    .padding(.horizontal,10)
+                    .padding(.horizontal, 20)
             }
-            .navigationTitle(viewModel.anime.title?.romaji ?? "")
-            .navigationBarTitleDisplayMode(.inline)
-            .safeAreaInset(edge: .bottom, content: {
-                Button {
-                    if let url  =  viewModel.anime.siteUrl {
-                        openURL(URL(string: url)!)
-                    }
-                } label: {
-                    Text("Go to Site")
-                        .font(.system(size: 15, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 40)
-                        .padding(.vertical, 10)
-                        .background(.blue)
-                        .cornerRadius(10)
-                }
-            })
         }
+        .navigationTitle(viewModel.anime.title?.romaji ?? "")
+        .navigationBarTitleDisplayMode(.inline)
+        .safeAreaInset(edge: .bottom, content: {
+            Button {
+                if let url = viewModel.anime.siteUrl {
+                    openURL(URL(string: url)!)
+                }
+            } label: {
+                Text("Go to Site")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 40)
+                    .padding(.vertical, 10)
+                    .background(.blue)
+                    .cornerRadius(10)
+            }
+        })
     }
     
     var genres: some View {
