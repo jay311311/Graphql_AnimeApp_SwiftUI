@@ -12,5 +12,7 @@ This is AnimeListApp to practive GraphQl and SwiftUI
 
 ## Feature
 - Networking with API
+- WebView with Safari
+- Animation ScrollView
 - MainView + DetailView
 
