@@ -11,6 +11,9 @@ struct MainView: View {
     @EnvironmentObject var service: AnimeNetworkService
     @ObservedObject var viewModel: MainViewModel
     
+    private let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    @State private var currentIndex = 0
+    
     @State var path: [DetailViewContent] = []
     
     var body: some View {
@@ -30,15 +33,24 @@ struct MainView: View {
                             .font(.system(size: 20, weight: .bold))
                             .padding(.leading, 20)
                             .padding(.top, 10)
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            MainSlideView(viewModel: viewModel) { anime in
-                                moveToDetail(anime: anime)
+                        ScrollViewReader { scrollView in
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                MainSlideView(viewModel: viewModel) { anime in
+                                    moveToDetail(anime: anime)
+                                }
+                                .padding(.horizontal, 20)
                             }
-                            .padding(.horizontal, 20)
+                            .frame(height: 300)
+                            .onReceive(timer, perform: {  value in
+                                let amount  = viewModel.animesForMainSlide.count
+                                currentIndex = currentIndex < amount-1 ? currentIndex + 1 : amount
+                                withAnimation {
+                                    scrollView.scrollTo(currentIndex, anchor: .center)
+                                }
+                            })
+                            Spacer()
+                            
                         }
-                        .frame(height: 300)
-                        Spacer()
                     }
                     
                     VStack(alignment: .leading) {
